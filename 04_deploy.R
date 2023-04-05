@@ -22,6 +22,6 @@ piggyback::pb_upload(parm$path_training, tag = parm$release_tag)
 
 # (optional) upload image files
 f_captcha <- fs::dir_ls(parm$img_path)
-f_zip <- paste0(img_path, ".zip")
-utils::zip(f_captcha, exdir = f_zip, flags = "r0")
+f_zip <- paste0(parm$img_path, ".zip")
+utils::zip(f_zip, files = f_captcha, flags = "-r0q")
 piggyback::pb_upload(f_zip, tag = parm$release_tag)
